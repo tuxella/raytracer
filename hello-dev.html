@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Hello ClojureScript</title>
+  </head>
+  <body>
+    <h1>Hello ClojureScript!</h1>
+    <!-- In unoptimized mode, additional script tags are required -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="out/goog/base.js"></script>
+    <script type="text/javascript" src="hello.js"></script>
+
+
+
+    <script>
+      goog.require('hello.core');
+    </script>
+    <canvas id="cvs" width=800 height=400 style='background:#000'/>
+    <script>
+      // Side effecting function, while I don't get javascript interop ...
+      setStrokeStyle = function (ctx, style) {
+      ctx.strokeStyle = style;
+      return (ctx);
+      }
+
+      setFillStyle = function (ctx, style) {
+      ctx.fillStyle = style;
+      return (ctx);
+      }
+
+      var canvas = document.getElementById("cvs")
+      console.log("From js :" + canvas);
+      hello.core.trace(canvas);
+    </script>
+  </body>
+</html>
